@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Pata Tap Clone</title>
+  <script type="text/javascript" src="lib/paper-full.js"></script>
+  <link rel="stylesheet" href="resources/css/styles.css">
+  <script type="text/paperscript" canvas="myCanvas">
+  // draws a circle in a single row.
+  // for(var x = 0; x < 1000; x+= 100){
+  //   var myCircle = new Path.Circle(new Point(x, 0), 10).fillColor = 'blue';
+  // }
+  // Create a triangle shaped path
+//   for(var i = 0; i < 1000; i+= 100){
+//     for(var j = 0; j < 1000; j+= 100){
+//     new Path.RegularPolygon(new Point(i, j), 3, 50).fillColor = 'purple';
+//   }
+// }
+  // covers the canvas in circle
+  // for(var x = 0; x < 1000; x+= 100){
+    // for every x theres 10 y
+    // for(var y = 0; y < 1000; y+= 100){
+    //   new Path.Circle(new Point(x, y), 10).fillColor = 'gold';
+      // var myCircle = new Path.Circle(new Point(x, y), 10).fillColor = 'blue'; no need for variable
+//   }
+// }
+
+function onKeyDown(event) {
+  // get the max width and height
+	var maxPoint = new Point(view.size.width, view.size.height);
+  // create a random point between 0 to 1(1 not inclusive)
+  var randomPoint = Point.random();
+  // multiply the random point to the maxPoint(width and height)
+  var point = maxPoint * randomPoint;
+  // new Point(point)-> point is randomized
+	new Path.Circle(new Point(point), 10).fillColor = 'gold';
+  // console.log('the max width and height of canvas is ' + maxPoint);
+  // console.log('the width size is '+ view.size.width);
+}
+
+  </script>
+</head>
+<body>
+<canvas id="myCanvas" resize></canvas>
+</body>
+</html>
