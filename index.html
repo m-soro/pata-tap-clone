@@ -24,7 +24,9 @@
 //   }
 // }
 
-function onKeyDown(event) {
+var circles = [];
+// empty array to start, then will push new circles onKeyDown function
+function onKeyDown(event){
   // get the max width and height
 	var maxPoint = new Point(view.size.width, view.size.height);
   // create a random point between 0 to 1(1 not inclusive)
@@ -32,7 +34,10 @@ function onKeyDown(event) {
   // multiply the random point to the maxPoint(width and height)
   var point = maxPoint * randomPoint;
   // new Point(point)-> point is randomized
-	new Path.Circle(new Point(point), 10).fillColor = 'gold';
+  var newCircle = new Path.Circle(point, 10);
+  newCircle.fillColor = 'gold';
+	circles.push(newCircle);
+  
   // console.log('the max width and height of canvas is ' + maxPoint);
   // console.log('the width size is '+ view.size.width);
 }
@@ -41,7 +46,12 @@ var animatedCircle = new Path.Circle(new Point(300,300), 100);
 animatedCircle.fillColor = 'red';
 
 function onFrame(event){
+  for(var i=0; i < circles.length; i++){
+    circles[i].fillColor.hue += 1;
+  }
   animatedCircle.fillColor.hue += 1;
+  // scale the circle .9 smaller each frame
+  // animatedCircle.scale(.9);
 }
 
   </script>
