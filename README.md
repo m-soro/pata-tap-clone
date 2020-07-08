@@ -7,5 +7,5 @@ Press any keys from a-z to generate a sound and color changing circles!
 * paperjs
 * howlerjs
 
-This project also introduces to HTML canvas. 
+This project is also an introduction to HTML canvas. 
 
