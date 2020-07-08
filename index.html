@@ -25,33 +25,41 @@
 // }
 
 var circles = [];
-// empty array to start, then will push new circles onKeyDown function
+// empty array to start, this will array will contain the newCircle created in onKeyDown function
 function onKeyDown(event){
-  // get the max width and height
+  // get the max width and height(x and y coordinates)
 	var maxPoint = new Point(view.size.width, view.size.height);
   // create a random point between 0 to 1(1 not inclusive)
   var randomPoint = Point.random();
   // multiply the random point to the maxPoint(width and height)
   var point = maxPoint * randomPoint;
-  // new Point(point)-> point is randomized
-  var newCircle = new Path.Circle(point, 10);
+  // create a new circle with a radius of 500, with random coordinates provided by point variable.
+  var newCircle = new Path.Circle(point, 300);
+  // separately color the circle
   newCircle.fillColor = 'gold';
+  // push the newCircle in circles array
 	circles.push(newCircle);
-  
   // console.log('the max width and height of canvas is ' + maxPoint);
   // console.log('the width size is '+ view.size.width);
 }
+// create animated circle - just a regular cirlce to begin with
+// var animatedCircle = new Path.Circle(new Point(300,300), 100);
+// animatedCircle.fillColor = 'red';
+// function onFrame(event){
+//   animatedCircle.fillColor.hue += 1;
+//   //scale the circle .9 smaller each frame
+//   animatedCircle.scale(.9);
+// }
 
-var animatedCircle = new Path.Circle(new Point(300,300), 100);
-animatedCircle.fillColor = 'red';
-
+// animation function
 function onFrame(event){
+  // loop thru all of the circles array
   for(var i=0; i < circles.length; i++){
+    // animate by adding a hue per keyframe
     circles[i].fillColor.hue += 1;
+    // and scaling down per key frame
+    circles[i].scale(.9);
   }
-  animatedCircle.fillColor.hue += 1;
-  // scale the circle .9 smaller each frame
-  // animatedCircle.scale(.9);
 }
 
   </script>
