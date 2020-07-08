@@ -190,7 +190,7 @@ function onKeyDown(event){
   }
 }
 
-// animation function
+// animation function and circle clean up function
 function onFrame(event){
   // loop thru all of the circles array
   for(var i=0; i < circles.length; i++){
@@ -198,6 +198,14 @@ function onFrame(event){
     circles[i].fillColor.hue += 1;
     // and scaling down per key frame
     circles[i].scale(.9);
+    // check to see if circle's area is less than 1, if it is then remove it from array.
+    if(circles[i].area < 1){
+      // remove the circle from the canvas
+      circles[i].remove();
+      // remove the circle from the array
+      circles.splice(i, 1);
+      // console.log(circles);
+    }
   }
 }
 
